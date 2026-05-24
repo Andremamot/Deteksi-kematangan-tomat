@@ -1,90 +1,93 @@
-# Deteksi Kematangan Tomat 🍅
-
-Aplikasi berbasis GUI (Graphical User Interface) yang dibuat menggunakan Python dan OpenCV untuk mendeteksi tingkat kematangan tomat berdasarkan pengolahan citra digital. Aplikasi ini membagi tahapan menjadi Preprocessing, Segmentasi, dan Klasifikasi.
-
-## Fitur Utama
-1. **Deteksi Citra Tunggal**: Memilih satu file gambar tomat untuk melihat gambar asli dan hasil segmentasi berdampingan beserta prediksi label kematangan.
-2. **Evaluasi Dataset Batch**: Memproses sekumpulan besar gambar dalam satu folder untuk melihat distribusi hasil deteksi dan akurasi (jika gambar berlabel).
-
-## Persyaratan (Prerequisites)
-Pastikan Anda sudah menginstal [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html) atau Python standar di sistem Anda.
+<div align="center">
+  <h1>🍅 Deteksi Kematangan Tomat</h1>
+  <p><i>Aplikasi Computer Vision Berbasis GUI dengan Python & OpenCV</i></p>
+  
+  [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+  [![OpenCV](https://img.shields.io/badge/OpenCV-4.13+-green.svg?logo=opencv&logoColor=white)](https://opencv.org/)
+  [![Tkinter](https://img.shields.io/badge/GUI-Tkinter-lightgrey.svg)](#)
+</div>
 
 ---
 
-## 🛠️ Cara Instalasi & Persiapan
+Aplikasi ini menggunakan metode pengolahan citra digital untuk mendeteksi tingkat kematangan buah tomat secara otomatis. Algoritma membagi proses ke dalam tiga tahapan utama: **Preprocessing**, **Segmentasi**, dan **Klasifikasi**.
 
-Anda bisa memilih salah satu dari dua metode di bawah ini. Metode pertama (Conda) sangat direkomendasikan.
+## ✨ Fitur Utama
 
-### Opsi 1: Menggunakan Conda (Direkomendasikan)
-Gunakan opsi ini agar lingkungan Python tertata rapi dan tidak mengganggu proyek Anda yang lain.
+- 🔍 **Deteksi Citra Tunggal**: Pilih satu gambar tomat dan amati proses dari citra asli, hasil segmentasi (penghapusan latar belakang), hingga prediksi akhir secara langsung berdampingan.
+- 📁 **Evaluasi Dataset Batch**: Uji performa algoritma sekaligus pada puluhan hingga ratusan gambar. Program akan menganalisis keseluruhan *folder* dan memberikan ringkasan statistik deteksi.
 
-1. Buka terminal atau Anaconda Prompt.
-2. Navigasikan ke dalam folder proyek ini:
-   ```bash
-   cd /path/ke/folder/Deteksi-kematangan-tomat
-   ```
-3. Buat environment baru dengan conda (menggunakan file `environment.yml`):
-   ```bash
-   conda env create -f environment.yml
-   ```
-   *(Alternatif jika Anda ingin menginstal manual dengan conda)*:
-   ```bash
-   conda create -n tomat_env python=3.10 opencv numpy pillow tk -y
-   ```
-4. Aktifkan environment yang baru saja dibuat:
-   ```bash
-   conda activate tomat_env
-   ```
+## 📂 Struktur Folder & Penempatan Dataset
 
-### Opsi 2: Menggunakan pip (Untuk pengguna Non-Conda)
-Opsi ini cocok jika teman Anda hanya menggunakan Python standar tanpa Conda.
+Agar aplikasi berjalan optimal, perhatikan letak folder dataset Anda. Buat sebuah folder bernama `dataset_tomat` di direktori utama proyek, dan masukkan seluruh gambar *sample* Anda ke dalamnya.
 
-1. Buka terminal/Command Prompt.
-2. Navigasikan ke dalam folder proyek ini:
-   ```bash
-   cd /path/ke/folder/Deteksi-kematangan-tomat
-   ```
-3. *(Opsional namun sangat disarankan)* Buat virtual environment pip:
-   ```bash
-   python -m venv venv
-   # Aktivasi (Windows): venv\Scripts\activate
-   # Aktivasi (Linux/Mac - Bash/Zsh): source venv/bin/activate
-   # Aktivasi (Linux/Mac - Fish): source venv/bin/activate.fish
-   ```
-4. Instal paket menggunakan `requirements.txt`:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```text
+Deteksi-kematangan-tomat/
+├── app.py                     # File utama untuk menjalankan GUI
+├── core/                      # Algoritma pemrosesan utama
+│   ├── evaluator.py
+│   └── image_processing.py
+├── dataset_tomat/             # 📁 LETAKKAN SEMUA GAMBAR DATASET DI SINI (*.bmp, *.jpg)
+├── environment.yml            # Konfigurasi environment Conda
+├── requirements.txt           # Konfigurasi requirements pip
+└── README.md                  # Dokumentasi proyek
+```
+
+---
+
+## 🛠️ Persiapan & Instalasi
+
+Pastikan Anda memiliki [Python](https://www.python.org/downloads/) terinstal. Sangat disarankan menggunakan *virtual environment*.
+
+### Opsi A: Menggunakan Conda (Sangat Disarankan)
+Metode terbaik untuk menjaga *environment* tetap rapi dan terisolasi.
+```bash
+# 1. Buat environment baru dari file konfigurasi
+conda env create -f environment.yml
+
+# 2. Aktifkan environment
+conda activate tomat_env
+```
+
+### Opsi B: Menggunakan Pip
+Alternatif jika Anda menggunakan *virtual environment* Python bawaan (`venv`).
+```bash
+# 1. Buat virtual environment (Lewati jika sudah ada)
+python -m venv .venv
+
+# 2. Aktifkan virtual environment
+# -> Linux/Mac (Bash/Zsh):
+source .venv/bin/activate
+# -> Linux/Mac (Fish Shell):
+source .venv/bin/activate.fish
+# -> Windows:
+.venv\Scripts\activate
+
+# 3. Instal semua dependencies
+pip install -r requirements.txt
+```
+
+> **Catatan Khusus Pengguna Linux**: Jika aplikasi mengalami *error* `ImportError: libtk8.6.so` saat dijalankan, pastikan paket `tk` sudah terinstal di sistem operasi Anda (contoh di Arch Linux: `sudo pacman -S tk`).
 
 ---
 
 ## 🚀 Cara Menjalankan Aplikasi
 
-Setelah Anda menyelesaikan tahap Instalasi dan mengaktifkan environment (conda atau pip), jalankan perintah berikut di dalam terminal:
-
+Setelah environment aktif, jalankan perintah ini di terminal:
 ```bash
 python app.py
 ```
+*Jendela GUI aplikasi akan segera terbuka.*
 
-Jendela antarmuka GUI akan segera terbuka.
-
-## 📖 Panduan Penggunaan
-
-### 1. Mendeteksi Gambar Tunggal
-- Klik tombol **"Pilih Gambar"** di sisi kiri jendela.
-- Cari dan pilih satu file gambar tomat (ekstensi `.bmp`, `.jpg`, `.png`).
-- Sistem akan langsung memproses gambar tersebut.
-- Hasil yang ditampilkan meliputi:
-  - **Citra Asli** di sebelah kiri.
-  - **Hasil Segmentasi** (hanya area tomat tanpa *background*) di sebelah kanan.
-  - **Hasil Klasifikasi** (Matang / Setengah Matang / Mentah) di panel kiri bawah.
-
-### 2. Menguji Kumpulan Dataset (Batch Testing)
-- Klik tombol **"Uji Dataset"** di sisi kiri jendela.
-- Pilih folder `dataset_tomat` (atau folder lain yang berisi koleksi gambar tomat).
-- Klik "Pilih" atau "Open".
-- Aplikasi akan menjalankan algoritma pada seluruh gambar yang ada di folder tersebut di latar belakang.
-- Sebuah *Pop-up Window* (Pesan Info) akan muncul berisi total gambar yang diproses, distribusi kematangan (jumlah Matang, Setengah Matang, Mentah), dan estimasi akurasi apabila file gambar memiliki label tertentu pada namanya.
+### 📖 Panduan Penggunaan Antarmuka
+1. **Deteksi Satuan**:
+   - Klik tombol **Pilih Gambar** di panel kiri.
+   - Arahkan ke file gambar di dalam folder `dataset_tomat`.
+   - Lihat hasil segmentasi dan prediksi kematangan (Mentah/Setengah Matang/Matang) yang otomatis muncul.
+   
+2. **Uji Masal (Dataset)**:
+   - Klik tombol **Uji Dataset**.
+   - Pilih folder `dataset_tomat` yang berisi kumpulan gambar Anda.
+   - Tunggu beberapa saat, lalu sistem akan memunculkan *pop-up* berisi laporan jumlah tomat di tiap kategori.
 
 ---
-*Dibuat untuk kebutuhan tugas/analisis pengolahan citra digital.*
+<p align="center"><i>Dibuat untuk analisis tugas pengolahan citra digital.</i></p>
