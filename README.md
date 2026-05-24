@@ -34,7 +34,25 @@ Deteksi-kematangan-tomat/
 
 ---
 
-## 🛠️ Persiapan & Instalasi
+## 🛠️ Langkah 1: Unduh Proyek & Dataset
+
+Karena dataset gambar ukurannya besar, gambar tidak ikut diunggah ke GitHub. Ikuti langkah ini dari awal:
+
+1. **Clone Repositori**:
+   Buka terminal/CMD Anda, lalu jalankan:
+   ```bash
+   git clone https://github.com/Andremamot/Deteksi-kematangan-tomat.git
+   cd Deteksi-kematangan-tomat
+   ```
+2. **Siapkan Dataset**:
+   - Buat folder bernama `dataset_tomat` di dalam direktori proyek ini.
+   - Pergi ke bagian **Releases** di sebelah kanan halaman GitHub ini (atau klik [di sini](https://github.com/Andremamot/Deteksi-kematangan-tomat/releases/download/v1.0/dataset_tomat.zip)).
+   - Unduh file `dataset_tomat.zip` dari sana.
+   - Ekstrak isi file zip tersebut (semua gambar `.bmp` / `.jpg`) dan masukkan ke dalam folder `dataset_tomat` yang baru saja Anda buat.
+
+---
+
+## ⚙️ Langkah 2: Persiapan Environment Python
 
 Pastikan Anda memiliki [Python](https://www.python.org/downloads/) terinstal. Sangat disarankan menggunakan *virtual environment*.
 
