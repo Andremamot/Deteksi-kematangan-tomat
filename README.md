@@ -66,21 +66,26 @@ conda env create -f environment.yml
 conda activate tomat_env
 ```
 
-### Opsi B: Menggunakan Pip
+### Opsi B: Menggunakan Pip (Tanpa Conda)
 Alternatif jika Anda menggunakan *virtual environment* Python bawaan (`venv`).
+
+**🍎 Untuk Pengguna Linux / macOS:**
+Buka terminal di dalam folder proyek, lalu jalankan:
 ```bash
-# 1. Buat virtual environment (Lewati jika sudah ada)
+# 1. Buat virtual environment (hanya pertama kali)
 python -m venv .venv
 
 # 2. Aktifkan virtual environment
-# -> Linux/Mac (Bash/Zsh):
-source .venv/bin/activate
-# -> Linux/Mac (Fish Shell):
-source .venv/bin/activate.fish
-# -> Windows:
-.venv\Scripts\activate
+source .venv/bin/activate         # (Untuk Bash / Zsh)
+# source .venv/bin/activate.fish  # (Gunakan ini jika Anda memakai Fish Shell)
 
-# 3. Instal semua dependencies
+# 3. Instal semua library
+pip install -r requirements.txt
+```
+
+**🪟 Untuk Pengguna Windows:**
+Buka Command Prompt (CMD) atau PowerShell di dalam folder proyek, lalu instal *library* secara langsung (tidak perlu menggunakan virtual environment):
+```cmd
 pip install -r requirements.txt
 ```
 
