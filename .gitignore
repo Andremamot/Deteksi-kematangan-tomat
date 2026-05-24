@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Dataset & Media (Abaikan folder dataset agar tidak membebani repository)
+dataset_tomat/
+# Jika ingin mengabaikan semua gambar di direktori utama, hapus tanda pagar di bawah ini:
+# *.bmp
+# *.jpg
+# *.png
+
+# OS / System Files
+.DS_Store
+Thumbs.db
+
+# IDEs / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
